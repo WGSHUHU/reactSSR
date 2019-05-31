@@ -1,5 +1,7 @@
 const express = require('express')
 const fs = require('fs')
+const Home = require('../src/Home')
+
 let template = fs.readFileSync('index.html', 'utf8')
 const app = express()
 app.get('/', (req, res) => {
