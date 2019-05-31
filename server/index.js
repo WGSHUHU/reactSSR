@@ -1,10 +1,14 @@
-const express = require('express')
-const fs = require('fs')
-const Home = require('../src/Home')
+import express from 'express'
+import fs from 'fs'
+import React from 'react'
+import ReactDOMSSR from 'react-dom/server'
+import Home from '../src/Home'
 
+const content = ReactDOMSSR.renderToString(<Home />)
 let template = fs.readFileSync('index.html', 'utf8')
 const app = express()
 app.get('/', (req, res) => {
+  template = template.replace('{{{body}}}', content)
   res.send(template)
 })
 
