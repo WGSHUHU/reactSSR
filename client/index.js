@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom'
 
 import Home from '../src/Home'
 
-ReactDOM.render(<Home/>, document.getElementById('app'))
+ReactDOM.hydrate(<Home/>, document.getElementById('app'))
