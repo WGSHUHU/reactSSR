@@ -2,7 +2,7 @@ import express from 'express'
 import fs from 'fs'
 import React from 'react'
 import ReactDOMSSR from 'react-dom/server'
-import Home from '../src/Home'
+import Home from '../Home'
 
 const app = express()
 const content = ReactDOMSSR.renderToString(<Home />)

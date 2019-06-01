@@ -4,7 +4,7 @@ const webpackMerge = require('webpack-merge')
 
 const clientConfig = {
   mode: 'development',
-  entry: './client/index.js',
+  entry: './src/client/index.js',
   output: {
     filename: 'client.js',
     path: path.resolve(__dirname, 'public')

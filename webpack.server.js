@@ -6,7 +6,7 @@ const webpackMerge = require('webpack-merge')
 const serverConfig = {
   mode: 'development',
   target: 'node',
-  entry: './server/index.js',
+  entry: './src/server/index.js',
   externals: [nodeExternals()],
   output: {
     filename: 'bundle.js',
