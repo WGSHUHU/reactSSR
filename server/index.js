@@ -4,9 +4,12 @@ import React from 'react'
 import ReactDOMSSR from 'react-dom/server'
 import Home from '../src/Home'
 
+const app = express()
 const content = ReactDOMSSR.renderToString(<Home />)
 let template = fs.readFileSync('index.html', 'utf8')
-const app = express()
+
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
   template = template.replace('{{{body}}}', content)
   res.send(template)
