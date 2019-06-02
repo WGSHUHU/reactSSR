@@ -10,7 +10,7 @@ let template = fs.readFileSync('index.html', 'utf8')
 
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   const App = () => {
     return (
       <StaticRouter location={req.path} context={{}}>
