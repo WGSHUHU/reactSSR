@@ -2,16 +2,11 @@ import React from 'react'
 import { StaticRouter } from 'react-router-dom'
 import ReactDOMSSR from 'react-dom/server'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+import getStore from './store'
 import Routes from './Routes'
 
-const reducer = (state = { name: 'wgs' }, action) => {
-  return state
-}
-const store = createStore(reducer, applyMiddleware(thunk))
-
 const render = req => {
+  const store = getStore()
   const App = () => {
     return (
       <Provider store={store}>
