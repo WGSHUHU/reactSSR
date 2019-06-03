@@ -1,6 +1,6 @@
 import express from 'express'
 import fs from 'fs'
-import { render } from '../utils'
+import { render } from './utils'
 
 const app = express()
 let template = fs.readFileSync('index.html', 'utf8')
