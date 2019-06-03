@@ -4,7 +4,7 @@ import Header from '../Header'
 
 const mapStateToProps = state => {
   return {
-    name: state.name
+    name: state.home.name
   }
 }
 
