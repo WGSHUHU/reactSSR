@@ -27,6 +27,7 @@ class Home extends React.Component {
   componentDidMount() {
     const { getHomeList } = this.props
     getHomeList()
+    console.log(this.props)
   }
 
   render() {
