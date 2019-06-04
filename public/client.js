@@ -833,7 +833,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getHomeListAction\", function() { return getHomeListAction; });\n// 1. action可以是一个对象，也可以是一个函数进行异步操作\n// 为什么可以在action函数中进行异步操作 ----> redux-thunk的特性\nvar createAction = function createAction(type, list) {\n  return {\n    type: type,\n    name: list\n  };\n};\n\nvar getHomeListAction = function getHomeListAction() {\n  return function (dispatch) {\n    dispatch(createAction('CHANGE_NAME', 'li'));\n  };\n};\n\n\n\n//# sourceURL=webpack:///./src/components/Home/actions.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getHomeListAction\", function() { return getHomeListAction; });\n/* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constant */ \"./src/components/Home/constant.js\");\n// 1. action可以是一个对象，也可以是一个函数进行异步操作\n// 为什么可以在action函数中进行异步操作 ----> redux-thunk的特性\n\n\nvar createAction = function createAction(type, list) {\n  return {\n    type: type,\n    name: list\n  };\n};\n\nvar getHomeListAction = function getHomeListAction() {\n  return function (dispatch) {\n    dispatch(createAction(_constant__WEBPACK_IMPORTED_MODULE_0__[\"CHANGE_NAME\"], 'li'));\n  };\n};\n\n\n\n//# sourceURL=webpack:///./src/components/Home/actions.js?");
+
+/***/ }),
+
+/***/ "./src/components/Home/constant.js":
+/*!*****************************************!*\
+  !*** ./src/components/Home/constant.js ***!
+  \*****************************************/
+/*! exports provided: CHANGE_NAME */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CHANGE_NAME\", function() { return CHANGE_NAME; });\nvar CHANGE_NAME = 'HOME/CHANGE_NAME';\n\n//# sourceURL=webpack:///./src/components/Home/constant.js?");
 
 /***/ }),
 
@@ -857,7 +869,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar defauleState = {\n  name: 'wgs 23',\n  newList: []\n};\n\nvar reducer = function reducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defauleState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case 'CHANGE_NAME':\n      return _objectSpread({}, state, {\n        name: action.name\n      });\n\n    default:\n      return state;\n  }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (reducer);\n\n//# sourceURL=webpack:///./src/components/Home/reducer.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constant */ \"./src/components/Home/constant.js\");\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n\nvar defauleState = {\n  name: 'wgs 23',\n  newList: []\n};\n\nvar reducer = function reducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defauleState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case _constant__WEBPACK_IMPORTED_MODULE_0__[\"CHANGE_NAME\"]:\n      return _objectSpread({}, state, {\n        name: action.name\n      });\n\n    default:\n      return state;\n  }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (reducer);\n\n//# sourceURL=webpack:///./src/components/Home/reducer.js?");
 
 /***/ }),
 

@@ -1,3 +1,5 @@
+import { CHANGE_NAME } from './constant'
+
 const defauleState = {
   name: 'wgs 23',
   newList: []
@@ -5,7 +7,7 @@ const defauleState = {
 
 const reducer = (state = defauleState, action) => {
   switch (action.type) {
-    case 'CHANGE_NAME':
+    case CHANGE_NAME:
       return {
         ...state,
         name: action.name
