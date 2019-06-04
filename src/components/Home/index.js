@@ -42,6 +42,10 @@ class Home extends React.Component {
   }
 }
 
+Home.loadData = () => {
+  // 这个函数负责在服务端渲染之前，将组件需要的数据提前加载好
+}
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
