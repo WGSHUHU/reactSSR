@@ -11,7 +11,7 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         {Routes.map(item => {
-          return <Route key={item.path} {...item} />
+          return <Route {...item} />
         })}
       </BrowserRouter>
     </Provider>

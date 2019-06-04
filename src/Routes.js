@@ -6,13 +6,14 @@ export default [
     path: '/',
     exact: true,
     component: Home,
-    loadData: Home.loadData
+    loadData: Home.loadData,
+    key: 'home'
   },
   {
     path: '/login',
     exact: true,
     component: Login,
-    loadData: Home.loadData
+    key: 'login'
   }
 ]
 
