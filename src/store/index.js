@@ -7,7 +7,7 @@ const reducer = combineReducers({
 })
 
 const getStore = () => {
-  return createStore(reducer, applyMiddleware(thunk))
+  return createStore(reducer, { name: 'li' }, applyMiddleware(thunk))
 }
 
 export default getStore
