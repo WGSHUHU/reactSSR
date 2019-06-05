@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Home */ \"./src/components/Home/index.js\");\n/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Login */ \"./src/components/Login/index.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  path: '/',\n  exact: true,\n  component: _components_Home__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  loadData: _components_Home__WEBPACK_IMPORTED_MODULE_0__[\"default\"].loadData,\n  key: 'home'\n}, {\n  path: '/login',\n  exact: true,\n  component: _components_Login__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  key: 'login'\n}]); // export default () => {\n//   return (\n//     <div>\n//       <Route path=\"/\" exact component={Home} />\n//       <Route path=\"/login\" exact component={Login} />\n//     </div>\n//   )\n// }\n\n//# sourceURL=webpack:///./src/Routes.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Home */ \"./src/components/Home/index.js\");\n/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Login */ \"./src/components/Login/index.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  path: '/',\n  // exact: true,\n  component: _components_Home__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  routes: [{\n    path: '/test',\n    exact: true,\n    component: _components_Login__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n    key: 'test'\n  }],\n  loadData: _components_Home__WEBPACK_IMPORTED_MODULE_0__[\"default\"].loadData,\n  // 3. loadData可以是其他的名字\n  key: 'home' // 2. 每个Route中唯一的标志key，例：<Route key=\"home\"/>\n\n}, {\n  path: '/login',\n  exact: true,\n  component: _components_Login__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  key: 'login'\n}]);\n\n//# sourceURL=webpack:///./src/Routes.js?");
 
 /***/ }),
 
@@ -178,7 +178,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fs */ \"fs\");\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ \"./src/server/utils.js\");\n\n\n\nvar app = express__WEBPACK_IMPORTED_MODULE_0___default()();\nvar template = fs__WEBPACK_IMPORTED_MODULE_1___default.a.readFileSync('index.html', 'utf8');\napp.use(express__WEBPACK_IMPORTED_MODULE_0___default.a[\"static\"]('public'));\napp.get('*', function (req, res) {\n  var content = Object(_utils__WEBPACK_IMPORTED_MODULE_2__[\"render\"])(req);\n  template = template.replace('{{{body}}}', content);\n  res.send(template);\n});\napp.listen(3000, function () {\n  console.log('server is listen 3000');\n});\n\n//# sourceURL=webpack:///./src/server/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fs */ \"fs\");\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! path */ \"path\");\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ \"./src/server/utils.js\");\n\n\n\n\nvar app = express__WEBPACK_IMPORTED_MODULE_0___default()();\nvar template = fs__WEBPACK_IMPORTED_MODULE_1___default.a.readFileSync('index.html', 'utf8');\napp.use(express__WEBPACK_IMPORTED_MODULE_0___default.a[\"static\"]('public'));\napp.get('*', function (req, res) {\n  if (req.url === '/favicon.ico') {\n    res.send('123');\n  } else {\n    var content = Object(_utils__WEBPACK_IMPORTED_MODULE_3__[\"render\"])(req);\n    template = template.replace('{{{body}}}', content);\n    res.send(template);\n  }\n});\napp.listen(3000, function () {\n  console.log('server is listen 3000');\n});\n\n//# sourceURL=webpack:///./src/server/index.js?");
 
 /***/ }),
 
@@ -225,6 +225,17 @@ eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///externa
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"fs\");\n\n//# sourceURL=webpack:///external_%22fs%22?");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"path\");\n\n//# sourceURL=webpack:///external_%22path%22?");
 
 /***/ }),
 

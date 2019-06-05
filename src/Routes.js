@@ -4,10 +4,18 @@ import Login from './components/Login'
 export default [
   {
     path: '/',
-    exact: true,
+    // exact: true,
     component: Home,
-    loadData: Home.loadData,
-    key: 'home'
+    routes: [
+      {
+        path: '/test',
+        exact: true,
+        component: Login,
+        key: 'test'
+      }
+    ],
+    loadData: Home.loadData, // 3. loadData可以是其他的名字
+    key: 'home' // 2. 每个Route中唯一的标志key，例：<Route key="home"/>
   },
   {
     path: '/login',
@@ -16,12 +24,3 @@ export default [
     key: 'login'
   }
 ]
-
-// export default () => {
-//   return (
-//     <div>
-//       <Route path="/" exact component={Home} />
-//       <Route path="/login" exact component={Login} />
-//     </div>
-//   )
-// }
