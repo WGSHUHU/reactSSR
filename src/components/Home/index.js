@@ -13,7 +13,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getHomeList() {
-      console.log('test')
       dispatch(getHomeListAction())
     }
   }
@@ -23,12 +22,6 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
-  }
-
-  componentDidMount() {
-    const { getHomeList } = this.props
-    getHomeList()
-    console.log(this.props)
   }
 
   render() {

@@ -4,7 +4,7 @@ import { StaticRouter, Route } from 'react-router-dom'
 import ReactDOMSSR from 'react-dom/server'
 import { matchRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
-import getStore from '../store'
+import { getStore } from '../store'
 import Routes from '../Routes'
 
 // 1. 需要在此处提前加载好组件需要的数据 ----> 前提是要知道用户请求地址和路由
@@ -42,6 +42,8 @@ export const render = (req, res) => {
 
     let template = fs.readFileSync('index.html', 'utf8')
     template = template.replace('{{{body}}}', content)
+    const serverStore = `window.__ssr_data=${JSON.stringify(store.getState())}`
+    template = template.replace('{{{SSRDATA}}}', serverStore)
 
     res.send(template)
   })
