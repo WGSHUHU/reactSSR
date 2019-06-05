@@ -1,6 +1,7 @@
 import React from 'react'
-import { StaticRouter, Route, matchPath } from 'react-router-dom'
+import { StaticRouter, Route } from 'react-router-dom'
 import ReactDOMSSR from 'react-dom/server'
+import { matchRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 import getStore from '../store'
 import Routes from '../Routes'
@@ -9,14 +10,8 @@ import Routes from '../Routes'
 // 2. 根据路由来往store中添加数据
 
 const render = req => {
-  let matchRoutes = []
-  Routes.forEach(route => {
-    const match = matchPath(req.path, route)
-    if (match) {
-      matchRoutes.push(route)
-    }
-  })
-  console.log(matchRoutes)
+  let matchRoutesArr = matchRoutes(Routes, req.path)
+  console.log(matchRoutesArr)
 
   const store = getStore()
   const App = () => {
