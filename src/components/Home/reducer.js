@@ -1,16 +1,16 @@
-import { CHANGE_NAME } from './constant'
+import { CHANGE_LIST } from './constant'
 
 const defauleState = {
-  name: 'wgs 23',
+  list: [],
   newList: []
 }
 
 const reducer = (state = defauleState, action) => {
   switch (action.type) {
-    case CHANGE_NAME:
+    case CHANGE_LIST:
       return {
         ...state,
-        name: action.name
+        list: action.list
       }
     default:
       return state
