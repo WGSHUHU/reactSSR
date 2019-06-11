@@ -9,9 +9,10 @@ const createAction = (type, list) => {
   }
 }
 
-const getHomeListAction = () => {
+const getHomeListAction = server => {
+  const url = server ? 'https://cnodejs.org/api/v1/topics' : '/api/v1/topics'
   return dispatch => {
-    return axios.get('https://cnodejs.org/api/v1/topics').then(res => {
+    return axios.get(url).then(res => {
       if (res.status === 200) {
         const list = res.data.data
         dispatch(createAction(CHANGE_LIST, list))

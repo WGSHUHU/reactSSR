@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getHomeList() {
-      dispatch(getHomeListAction())
+      dispatch(getHomeListAction(false))
     }
   }
 }
@@ -51,7 +51,7 @@ class Home extends React.Component {
 
 Home.loadData = store => {
   // 这个函数负责在服务端渲染之前，将组件需要的数据提前加载好
-  return store.dispatch(getHomeListAction()) // 返回一个promise对象
+  return store.dispatch(getHomeListAction(true)) // 返回一个promise对象
 }
 
 export default connect(
