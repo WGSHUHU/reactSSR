@@ -1134,6 +1134,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
+/***/ "./src/client/request.js":
+/*!*******************************!*\
+  !*** ./src/client/request.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n  baseURL: '/'\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (instance);\n\n//# sourceURL=webpack:///./src/client/request.js?");
+
+/***/ }),
+
 /***/ "./src/components/Header/index.js":
 /*!****************************************!*\
   !*** ./src/components/Header/index.js ***!
@@ -1154,7 +1166,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getHomeListAction\", function() { return getHomeListAction; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constant */ \"./src/components/Home/constant.js\");\n// 1. action可以是一个对象，也可以是一个函数进行异步操作\n// 为什么可以在action函数中进行异步操作 ----> redux-thunk的特性\n\n\n\nvar createAction = function createAction(type, list) {\n  return {\n    type: type,\n    list: list\n  };\n};\n\nvar getHomeListAction = function getHomeListAction(server) {\n  var url = server ? 'https://cnodejs.org/api/v1/topics' : '/api/v1/topics';\n  return function (dispatch) {\n    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (res) {\n      if (res.status === 200) {\n        var list = res.data.data;\n        dispatch(createAction(_constant__WEBPACK_IMPORTED_MODULE_1__[\"CHANGE_LIST\"], list));\n      }\n    });\n  };\n};\n\n\n\n//# sourceURL=webpack:///./src/components/Home/actions.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getHomeListAction\", function() { return getHomeListAction; });\n/* harmony import */ var _client_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../client/request */ \"./src/client/request.js\");\n/* harmony import */ var _server_request__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../server/request */ \"./src/server/request.js\");\n/* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constant */ \"./src/components/Home/constant.js\");\n// 1. action可以是一个对象，也可以是一个函数进行异步操作\n// 为什么可以在action函数中进行异步操作 ----> redux-thunk的特性\n\n\n\n\nvar createAction = function createAction(type, list) {\n  return {\n    type: type,\n    list: list\n  };\n};\n\nvar getHomeListAction = function getHomeListAction(server) {\n  var request = server ? _server_request__WEBPACK_IMPORTED_MODULE_1__[\"default\"] : _client_request__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\n  return function (dispatch) {\n    return request.get('/api/v1/topics').then(function (res) {\n      if (res.status === 200) {\n        var list = res.data.data;\n        dispatch(createAction(_constant__WEBPACK_IMPORTED_MODULE_2__[\"CHANGE_LIST\"], list));\n      }\n    });\n  };\n};\n\n\n\n//# sourceURL=webpack:///./src/components/Home/actions.js?");
 
 /***/ }),
 
@@ -1203,6 +1215,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _con
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Header */ \"./src/components/Header/index.js\");\n\n\n\nvar Login = function Login() {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"p\", null, \"Login\"));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Login);\n\n//# sourceURL=webpack:///./src/components/Login/index.js?");
+
+/***/ }),
+
+/***/ "./src/server/request.js":
+/*!*******************************!*\
+  !*** ./src/server/request.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n  baseURL: 'https://cnodejs.org'\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (instance);\n\n//# sourceURL=webpack:///./src/server/request.js?");
 
 /***/ }),
 
