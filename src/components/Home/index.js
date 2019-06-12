@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getHomeListAction } from './actions'
-import Header from '../Header'
 
 const mapStateToProps = state => {
   return {
@@ -41,7 +40,6 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <div>{this.getList()}</div>
         <button onClick={() => alert(1)}>点击按钮</button>
       </div>

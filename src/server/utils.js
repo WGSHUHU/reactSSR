@@ -5,6 +5,7 @@ import ReactDOMSSR from 'react-dom/server'
 import { matchRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 import { getStore } from '../store'
+import { renderRoutes } from 'react-router-config'
 import Routes from '../Routes'
 
 // 1. 需要在此处提前加载好组件需要的数据 ----> 前提是要知道用户请求地址和路由
@@ -31,9 +32,7 @@ export const render = (req, res) => {
       return (
         <Provider store={store}>
           <StaticRouter location={req.path} context={{}}>
-            {Routes.map(item => {
-              return <Route {...item} />
-            })}
+            {renderRoutes(Routes)}
           </StaticRouter>
         </Provider>
       )
