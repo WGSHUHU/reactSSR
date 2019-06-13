@@ -12,7 +12,7 @@ import Routes from '../Routes'
 // 2. 根据路由来往store中添加数据
 
 export const render = (req, res) => {
-  const store = getStore()
+  const store = getStore(req)
   // 1. 根据路由，往store中添加数据
   let matchRoutesArr = matchRoutes(Routes, req.path)
   // console.log(matchRoutesArr)
@@ -26,7 +26,6 @@ export const render = (req, res) => {
       promises.push(item.route.loadData(store))
     }
   })
-
   Promise.all(promises).then(() => {
     const App = () => {
       return (
@@ -43,7 +42,6 @@ export const render = (req, res) => {
     template = template.replace('{{{body}}}', content)
     const serverStore = `window.__ssr_data=${JSON.stringify(store.getState())}`
     template = template.replace('{{{SSRDATA}}}', serverStore)
-
     res.send(template)
   })
 }

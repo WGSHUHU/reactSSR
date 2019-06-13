@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getHomeListAction } from './actions'
+import { CHNAGE_LOGIN } from './constant'
 
 const mapStateToProps = state => {
   return {
@@ -12,6 +13,12 @@ const mapDispatchToProps = dispatch => {
   return {
     getHomeList() {
       dispatch(getHomeListAction())
+    },
+    handleLoginOut() {
+      dispatch({
+        type: CHNAGE_LOGIN,
+        data: false
+      })
     }
   }
 }
@@ -38,10 +45,11 @@ class Home extends React.Component {
   }
 
   render() {
+    const { handleLoginOut } = this.props
     return (
       <div>
+        <button onClick={handleLoginOut}>退出</button>
         <div>{this.getList()}</div>
-        <button onClick={() => alert(1)}>点击按钮</button>
       </div>
     )
   }

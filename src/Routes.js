@@ -6,6 +6,7 @@ export default [
   {
     path: '/',
     component: Header,
+    loadData: Header.loadData,
     routes: [
       {
         path: '/',

@@ -10,10 +10,10 @@ const reducer = combineReducers({
   header: HeaderReducer
 })
 
-export const getStore = () => {
+export const getStore = req => {
   return createStore(
     reducer,
-    applyMiddleware(thunk.withExtraArgument(serverAxios))
+    applyMiddleware(thunk.withExtraArgument(serverAxios(req)))
   )
 }
 
