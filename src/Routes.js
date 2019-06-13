@@ -1,11 +1,11 @@
 import Home from './components/Home'
 import Login from './components/Login'
-import App from './App'
+import Header from './components/Header'
 
 export default [
   {
     path: '/',
-    component: App,
+    component: Header,
     routes: [
       {
         path: '/',

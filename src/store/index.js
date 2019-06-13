@@ -3,9 +3,11 @@ import thunk from 'redux-thunk'
 import clientAxios from '../client/request'
 import serverAxios from '../server/request'
 import HomeReducer from '../components/Home/reducer'
+import HeaderReducer from '../components/Header/reducer'
 
 const reducer = combineReducers({
-  home: HomeReducer
+  home: HomeReducer,
+  header: HeaderReducer
 })
 
 export const getStore = () => {
