@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import { headerLoginAction } from './action'
+import withStyle from '../../withStyle'
 import styles from './style.css'
 
 const mapStateToProps = state => {
@@ -27,13 +28,6 @@ class Header extends React.Component {
     this.state = {}
   }
 
-  componentWillMount() {
-    const { staticContext } = this.props
-    if (staticContext) {
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
-
   render() {
     const { login, route, handleLogin } = this.props
     return (
@@ -52,11 +46,13 @@ class Header extends React.Component {
   }
 }
 
-Header.loadData = store => {
+const ExportHeader = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyle(Header, styles))
+
+ExportHeader.loadData = store => {
   return store.dispatch(headerLoginAction())
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header)
+export default ExportHeader

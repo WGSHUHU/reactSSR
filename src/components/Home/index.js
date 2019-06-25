@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getHomeListAction } from './actions'
 import { CHNAGE_LOGIN } from './constant'
 import styles from './style.css'
+import withStyle from '../../withStyle'
 
 const mapStateToProps = state => {
   return {
@@ -31,13 +32,6 @@ class Home extends React.Component {
     this.getList = this.getList.bind(this)
   }
 
-  componentWillMount() {
-    const { staticContext } = this.props
-    if (staticContext) {
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
-
   componentDidMount() {
     const { list } = this.props
     if (!list.length) {
@@ -62,13 +56,14 @@ class Home extends React.Component {
     )
   }
 }
+const ExportHome = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyle(Home, styles))
 
-Home.loadData = store => {
+ExportHome.loadData = store => {
   // 这个函数负责在服务端渲染之前，将组件需要的数据提前加载好
   return store.dispatch(getHomeListAction()) // 返回一个promise对象
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home)
+export default ExportHome
