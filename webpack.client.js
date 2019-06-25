@@ -8,6 +8,23 @@ const clientConfig = {
   output: {
     filename: 'client.js',
     path: path.resolve(__dirname, 'public')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader']
+      },
+      {
+        test: /\.css$/i,
+        loader: 'css-loader',
+        options: {
+          modules: {
+            localIdentName: '[name]-[local]-[hash:base64:5]'
+          }
+        }
+      }
+    ]
   }
 }
 

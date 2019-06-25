@@ -11,6 +11,26 @@ const serverConfig = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['isomorphic-style-loader']
+      },
+      {
+        test: /\.css$/,
+        loader: 'css-loader',
+        options: {
+          modules: {
+            localIdentName: '[name]-[local]-[hash:base64:5]'
+            // name:文件名，style.css
+            // local:实际的名字
+            // hash：内容的hash值
+          }
+        }
+      }
+    ]
   }
 }
 

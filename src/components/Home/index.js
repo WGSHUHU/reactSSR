@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getHomeListAction } from './actions'
 import { CHNAGE_LOGIN } from './constant'
+import styles from './style.css'
 
 const mapStateToProps = state => {
   return {
@@ -30,6 +31,13 @@ class Home extends React.Component {
     this.getList = this.getList.bind(this)
   }
 
+  componentWillMount() {
+    const { staticContext } = this.props
+    if (staticContext) {
+      this.props.staticContext.css.push(styles._getCss())
+    }
+  }
+
   componentDidMount() {
     const { list } = this.props
     if (!list.length) {
@@ -49,7 +57,7 @@ class Home extends React.Component {
     return (
       <div>
         <button onClick={handleLoginOut}>退出</button>
-        <div>{this.getList()}</div>
+        <div className={styles['list-wgs']}>{this.getList()}</div>
       </div>
     )
   }

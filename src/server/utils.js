@@ -1,6 +1,5 @@
 import React from 'react'
-import fs from 'fs'
-import { StaticRouter, Route } from 'react-router-dom'
+import { StaticRouter } from 'react-router-dom'
 import ReactDOMSSR from 'react-dom/server'
 import { matchRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
@@ -26,22 +25,41 @@ export const render = (req, res) => {
       promises.push(item.route.loadData(store))
     }
   })
+  let context = {
+    css: []
+  }
   Promise.all(promises).then(() => {
     const App = () => {
       return (
         <Provider store={store}>
-          <StaticRouter location={req.path} context={{}}>
+          <StaticRouter location={req.path} context={context}>
             {renderRoutes(Routes)}
           </StaticRouter>
         </Provider>
       )
     }
-    const content = ReactDOMSSR.renderToString(<App />)
 
-    let template = fs.readFileSync('index.html', 'utf8')
-    template = template.replace('{{{body}}}', content)
+    const content = ReactDOMSSR.renderToString(<App />)
+    const cssStr = context.css.length ? context.css.join('\n') : ''
+
     const serverStore = `window.__ssr_data=${JSON.stringify(store.getState())}`
-    template = template.replace('{{{SSRDATA}}}', serverStore)
+    const template = `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <style>${cssStr}</style>
+      </head>
+      <body>
+        <div id="app">${content}</div>
+        <script>${serverStore}</script>
+        <script src="/client.js"></script>
+      </body>
+    </html>`
+
     res.send(template)
   })
 }
