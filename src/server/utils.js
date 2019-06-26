@@ -1,6 +1,7 @@
 import React from 'react'
 import { StaticRouter } from 'react-router-dom'
 import ReactDOMSSR from 'react-dom/server'
+import { Helmet } from 'react-helmet'
 import { matchRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 import { getStore } from '../store'
@@ -41,7 +42,7 @@ export const render = (req, res) => {
 
     const content = ReactDOMSSR.renderToString(<App />)
     const cssStr = context.css.length ? context.css.join('\n') : ''
-
+    const helmet = Helmet.renderStatic()
     const serverStore = `window.__ssr_data=${JSON.stringify(store.getState())}`
     const template = `
     <!DOCTYPE html>
@@ -50,7 +51,8 @@ export const render = (req, res) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Document</title>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
         <style>${cssStr}</style>
       </head>
       <body>

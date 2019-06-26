@@ -1,6 +1,6 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { CHNAGE_LOGIN } from './constant'
-
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
@@ -32,6 +32,11 @@ class Header extends React.Component {
     const { login, route, handleLogin } = this.props
     return (
       <div>
+        <Helmet>
+          <title>My Title</title>
+          <meta name="keywords" content="我联系的东西" />
+          <meta name="description" content="联系使用" />
+        </Helmet>
         <Link to="/" className={styles.head}>
           首页
         </Link>
